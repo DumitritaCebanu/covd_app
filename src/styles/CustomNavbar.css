@@ -1,0 +1,15 @@
+#customNavbar #basic-navbar-nav {
+    justify-content: flex-end;
+}
+
+#customNavbar #basic-navbar-nav a {
+    display: block;
+    padding: .5rem 1rem;
+    color: rgba(0, 0, 0, .55);
+    text-decoration: none;
+    transition: color .15s ease-in-out;
+}
+
+#customNavbar #basic-navbar-nav a:hover {
+    color: rgba(0, 0, 0, .7);
+}
