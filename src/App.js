@@ -13,15 +13,11 @@ const App = () => {
         <>
             <Router>
                 <CustomNavbar/>
-                <Container>
-                    <Row>
-                            <Routes>
-                                <Route exact path='/' element={<Home/>}/>
-                                <Route path='/statistics' element={<Statistics/>}/>
-                                <Route path='/predictions' element={<Predictions/>}/>
-                            </Routes>
-                    </Row>
-                </Container>
+                <Routes>
+                    <Route exact path='/' element={<Home/>}/>
+                    <Route path='/statistics' element={<Statistics/>}/>
+                    <Route path='/predictions' element={<Predictions/>}/>
+                </Routes>
             </Router>
         </>
 
