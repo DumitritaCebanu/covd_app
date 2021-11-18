@@ -1,0 +1,46 @@
+#text_img{
+    color: #ffff;
+    padding: 150px 30px;
+    font-size: 75px;
+    text-align: left;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-style: normal;
+}
+.square {
+    display: flex;
+    width: 250px;
+    height: 250px;
+    background-color: #023047;
+    border-radius: 10px;
+}
+.text {
+    margin: auto;
+    font-size: 45px;
+    color: #fcbc49;
+    font-weight: bold;
+    text-align: center;
+}
+
+.vaccin-img{
+    display: block;
+    max-width: 100%;
+    padding: 75px 0px;
+}
+.text-vaccin{
+    text-align: left;
+    padding: 90px 0px;
+    color: #e0fbfc;
+}
+.nr-vaccin{
+    text-align: left;
+    color: #e0fbfc;
+}
+
+.circle {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    border-radius: 50%;
+}
