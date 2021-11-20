@@ -3,7 +3,7 @@ import React from 'react';
 function Predictions() {
     return (
         <div className='products'>
-            <h1>Products</h1>
+            <h1>Prodictions</h1>
         </div>
     );
 }

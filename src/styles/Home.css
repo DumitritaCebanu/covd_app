@@ -11,13 +11,13 @@
     display: flex;
     width: 250px;
     height: 250px;
-    background-color: #023047;
+    background-color: #8ecae6;
     border-radius: 10px;
 }
 .text {
     margin: auto;
     font-size: 45px;
-    color: #fcbc49;
+    color: #023047;
     font-weight: bold;
     text-align: center;
 }

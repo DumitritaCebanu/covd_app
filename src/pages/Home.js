@@ -74,7 +74,7 @@ function Home() {
             <br/><br/>
         </Container>
         <Container fluid style={{
-            backgroundColor: "rgba(61,90,128,1)",
+            backgroundColor: "rgba(61, 90, 128, 1)",
             backgroundSize: "cover",
             color: "#f5f5f5"
         }}>
