@@ -24,9 +24,9 @@ function Home() {
                 setDataRata(data.map(item => (item.rata)))
                 setDataCazuri(data.map(item => (item.cazuri)))
                 setDataDecese(data.map(item => (item.decese)))
-                setDataVaccin(data.map(item => (item.dozeVaccin24h)))
-                setDataRapel(data.map(item => (item.dozeRapel24h)))
-                setDataTreia(data.map(item => (item.dozaATreia24h)))
+                setDataVaccin(data.map(item => (item.totalDozeVaccin)))
+                setDataRapel(data.map(item => (item.totalDozeRapel)))
+                setDataTreia(data.map(item => (item.totalDozeUnice)))
             })
             .catch(err => console.warn(err))
     }, [])
@@ -84,7 +84,7 @@ function Home() {
                         <img src={vaccin} className="vaccin-img"/>
                     </Col>
                     <Col lg={8}>
-                        <h1 className="text-vaccin">Statistici vaccinuri in Timsoara 24h</h1>
+                        <h1 className="text-vaccin">Statistici vaccinuri in Timsoara</h1>
                         <Row style={{padding: "5px 10px"}}>
                             <Col>
                                 <h2 className="nr-vaccin">Doze Vaccin <br/>{dataDozeVaccin}</h2>

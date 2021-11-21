@@ -20,9 +20,15 @@ function Statistics() {
     //pentru chart cu  paturi libere
     const [dataPaturiOxigenLibere, setDataPaturiOxigenLibere] = useState([])
     const [dataPaturiOxigen, setDataPaturiOxigen] = useState([])
-
-
+    //pentru numarul de zile ce se vor afisa
     const [daysNumber, setDaysNumber] = useState(30)
+
+
+    const handleChange = (event) => {
+        event.preventDefault();
+        //console.log(event.target.elements.days.value)
+        setDaysNumber(event.target.elements.days.value);
+    }
 
     useEffect(() => {
         axios.get('https://covid19.primariatm.ro/istoric-covid19-tm.json')
@@ -40,7 +46,8 @@ function Statistics() {
                 setDataPaturiOxigen(data.map(item => (item.paturiOxigen)))
             })
             .catch(err => console.warn(err))
-    }, [])
+    }, [daysNumber])
+
 
     return <div className="back">
         <Container fluid style={{
@@ -52,6 +59,10 @@ function Statistics() {
             <h1 className="text-top">
                 Statistici covid extinse
             </h1>
+            <form onSubmit={handleChange}>
+                <input type="number"  name="days" placeholder="Introdu numarul de zile pentru vizualizarea unei statistici mai restranse sau extinse" min="1" className="form"/>
+                <input type="submit" className="button"/>
+            </form>
         </Container>
 
 
@@ -64,41 +75,85 @@ function Statistics() {
             marginBottom: "30px"
         }}>
             <Container style={{
-                        marginBottom: "100px",
-                        backgroundColor: "#f5f5f5",
-                        backgroundSize: "cover",
-                        borderRadius: "15px"
-                        }}>
-            <Row>
-                <h1 className="text-grafic">
-                    Rata de infectare in Timisoara
-                </h1>
-                <Col>
-                    <Line
-                        data={{
-                            labels: labels,
-                            datasets:
-                                [
+                marginBottom: "100px",
+                backgroundColor: "#f5f5f5",
+                backgroundSize: "cover",
+                borderRadius: "15px"
+            }}>
+                <Row>
+                    <h1 className="text-grafic">
+                        Rata de infectare in Timisoara
+                    </h1>
+                    <Col>
+                        <Line
+                            data={{
+                                labels: labels,
+                                datasets:
+                                    [
+                                        {
+                                            label: 'Rata de infectare',
+                                            data: dataRata,
+                                            backgroundColor: 'rgba(252, 191, 73, 1)'
+                                        },
+                                    ],
+                            }}
+                            height={400}
+                            width={200}
+                            options={{
+                                maintainAspectRatio: false,
+                                legend: {
+                                    labels: {
+                                        fontSize: 2
+                                    }
+                                }
+                            }}
+                        />
+                    </Col>
+                </Row>
+            </Container>
+            <Container style={{
+                marginBottom: "100px",
+                backgroundColor: "#f5f5f5",
+                backgroundSize: "cover",
+                borderRadius: "15px"
+            }}>
+                <Row>
+                    <h1 className="text-grafic">
+                        Cazurile si decesle in Timisoara
+                    </h1>
+                    <Col>
+                        <Line
+                            data={{
+                                labels: labels,
+                                datasets: [
                                     {
-                                        label: 'Rata de infectare',
-                                        data: dataRata,
-                                        backgroundColor: 'rgba(252, 191, 73, 1)'
+                                        label: 'Cazuri',
+                                        data: dataCazuri,
+                                        backgroundColor: //pune doar pentru prima coloana ['red'],prosta 'red' pune culoarea pentru toate
+                                            'rgba(54,162,235,0.5)',
+                                        borderColor: 'rgba(54,162,235,1)',
+                                    },
+                                    {
+                                        label: 'Decse',
+                                        data: dataDecese,
+                                        backgroundColor: 'orange',
+                                        borderColor: 'red',
                                     },
                                 ],
-                        }}
-                        height={400}
-                        width={200}
-                        options={{
-                            maintainAspectRatio: false,
-                            legend: {
-                                labels: {
-                                    fontSize: 2
+                            }}
+                            height={400}
+                            width={200}
+                            options={{
+                                maintainAspectRatio: false,
+                                legend: {
+                                    labels: {
+                                        fontSize: 2
+                                    }
                                 }
-                            }
-                        }}
-                    />
-                </Col>
-            </Row>
+                            }}
+                        />
+                    </Col>
+                </Row>
             </Container>
             <Container style={{
                 marginBottom: "100px",
@@ -106,138 +161,94 @@ function Statistics() {
                 backgroundSize: "cover",
                 borderRadius: "15px"
             }}>
-            <Row>
-                <h1 className="text-grafic">
-                    Cazurile si decesle in Timisoara
-                </h1>
-                <Col>
-                    <Line
-                        data={{
-                            labels: labels,
-                            datasets: [
-                                {
-                                    label: 'Cazuri',
-                                    data: dataCazuri,
-                                    backgroundColor: //pune doar pentru prima coloana ['red'],prosta 'red' pune culoarea pentru toate
-                                        'rgba(54,162,235,0.5)',
-                                    borderColor: 'rgba(54,162,235,1)',
-                                },
-                                {
-                                    label: 'Decse',
-                                    data: dataDecese,
-                                    backgroundColor: 'orange',
-                                    borderColor: 'red',
-                                },
-                            ],
-                        }}
-                        height={400}
-                        width={200}
-                        options={{
-                            maintainAspectRatio: false,
-                            legend: {
-                                labels: {
-                                    fontSize: 2
-                                }
-                            }
-                        }}
-                    />
-                </Col>
-            </Row>
-            </Container>
-            <Container style={{
-                marginBottom: "100px",
-                backgroundColor: "#f5f5f5",
-                backgroundSize: "cover",
-                borderRadius: "15px"
-            }}>
-            <Row>
-                <h1 className="text-grafic">
-                    Situatia in Spitale
-                </h1>
-            </Row>
-            <Row>
-                <Col>
-                    <Bar
-                        data={{
-                            labels: labels,
-                            datasets: [
-                                {
-                                    label: 'Pacienti',
-                                    data: dataPacienti,
-                                    backgroundColor: 'rgba(61, 90, 128, 1)',
-                                    borderWidth: 1,
-                                },
-                                {
-                                    label: 'Pacienti Copii',
-                                    data: dataPacientiCopii,
-                                    backgroundColor: 'rgba(203, 108, 77, 1)',
-                                    borderWidth: 1,
-                                },
-                                {
-                                    label: 'Pacienti ATI',
-                                    data: dataPacientiAti,
-                                    backgroundColor: 'rgba(152, 193, 217, 1)',
-                                    borderWidth: 1,
-                                },
-                            ],
-                        }}
-                        height={400}
-                        width={200}
-                        options={{
-                            maintainAspectRatio: false,
-                            legend: {
-                                labels: {
-                                    fontSize: 2
-                                }
-                            }
-                        }}
-                    />
-                </Col>
-            </Row>
-            </Container>
-            <Container style={{
-                marginBottom: "100px",
-                backgroundColor: "#f5f5f5",
-                backgroundSize: "cover",
-                borderRadius: "15px"
-            }}>
-            <Row>
-                <h1 className="text-grafic">
-                    Disponibilitate Paturi cu Oxigen
-                </h1>
-            </Row>
-            <Row>
-                <Col>
-                    <Bar
-                        data={{
-                            labels: labels,
-                            datasets:
-                                [
+                <Row>
+                    <h1 className="text-grafic">
+                        Situatia in Spitale
+                    </h1>
+                </Row>
+                <Row>
+                    <Col>
+                        <Bar
+                            data={{
+                                labels: labels,
+                                datasets: [
                                     {
-                                        label: 'Paturi Oxigen',
-                                        data: dataPaturiOxigen,
-                                        backgroundColor: 'rgba(0, 48, 73, 1)',
+                                        label: 'Pacienti',
+                                        data: dataPacienti,
+                                        backgroundColor: 'rgba(61, 90, 128, 1)',
+                                        borderWidth: 1,
                                     },
                                     {
-                                        label: 'Paturi Oxigen Libere',
-                                        data: dataPaturiOxigenLibere,
-                                        backgroundColor: 'rgba(214, 40, 40, 1)',
+                                        label: 'Pacienti Copii',
+                                        data: dataPacientiCopii,
+                                        backgroundColor: 'rgba(203, 108, 77, 1)',
+                                        borderWidth: 1,
+                                    },
+                                    {
+                                        label: 'Pacienti ATI',
+                                        data: dataPacientiAti,
+                                        backgroundColor: 'rgba(152, 193, 217, 1)',
+                                        borderWidth: 1,
                                     },
                                 ],
-                        }}
-                        height={400}
-                        width={200}
-                        options={{
-                            maintainAspectRatio: false,
-                            legend: {
-                                labels: {
-                                    fontSize: 2
+                            }}
+                            height={400}
+                            width={200}
+                            options={{
+                                maintainAspectRatio: false,
+                                legend: {
+                                    labels: {
+                                        fontSize: 2
+                                    }
                                 }
-                            }
-                        }}
-                    />
-                </Col>
-            </Row>
+                            }}
+                        />
+                    </Col>
+                </Row>
+            </Container>
+            <Container style={{
+                marginBottom: "100px",
+                backgroundColor: "#f5f5f5",
+                backgroundSize: "cover",
+                borderRadius: "15px"
+            }}>
+                <Row>
+                    <h1 className="text-grafic">
+                        Disponibilitate Paturi cu Oxigen
+                    </h1>
+                </Row>
+                <Row>
+                    <Col>
+                        <Bar
+                            data={{
+                                labels: labels,
+                                datasets:
+                                    [
+                                        {
+                                            label: 'Paturi Oxigen',
+                                            data: dataPaturiOxigen,
+                                            backgroundColor: 'rgba(0, 48, 73, 1)',
+                                        },
+                                        {
+                                            label: 'Paturi Oxigen Libere',
+                                            data: dataPaturiOxigenLibere,
+                                            backgroundColor: 'rgba(214, 40, 40, 1)',
+                                        },
+                                    ],
+                            }}
+                            height={400}
+                            width={200}
+                            options={{
+                                maintainAspectRatio: false,
+                                legend: {
+                                    labels: {
+                                        fontSize: 2
+                                    }
+                                }
+                            }}
+                        />
+                    </Col>
+                </Row>
             </Container>
         </Container>
     </div>
