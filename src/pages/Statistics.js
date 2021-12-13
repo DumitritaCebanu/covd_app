@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Line, Bar} from 'react-chartjs-2'
 import axios from "axios";
-import {Container, Row, Col, AccordionContext} from "react-bootstrap";
+import {Container, Row, Col} from "react-bootstrap";
 import '../styles/Statistics.css';
 
 

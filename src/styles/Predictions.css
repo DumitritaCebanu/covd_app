@@ -1,8 +1,5 @@
-.back{
-    background-color: #003049;
-}
 .button-pd {
-    background-color: #ffb703; /* Green */
+    background-color: #ffb703;
     border: none;
     border-radius: 4px;
     color: #ffffff;
@@ -20,9 +17,17 @@
     background-color: #fb8500;
     color: white;
 }
-
+.text-pred{
+    color: #8ecae6;
+    text-align: center;
+}
 
 .space-button{
-    padding: 20px 40px;
+    padding: 20px 0;
     text-align: center;
+}
+.text-cazuri{
+    text-align: center;
+    padding:  30px 0;
+    color: #023047;
 }
