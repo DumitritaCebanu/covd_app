@@ -41,6 +41,7 @@ function Predictions() {
     const [labels, setLabels] = useState([])
 
     const makeReq = (typeReq) => {
+       //din API
         /*
                 axios({
                     method: 'get',
@@ -63,6 +64,7 @@ function Predictions() {
                         console.warn(err)
                     })
         */
+        //pentru test
         /*
         if (typeReq === "linear") {
             // plotFunc(`${res.data.aValue} + ${res.data.bValue} * x`)
@@ -70,8 +72,8 @@ function Predictions() {
         } else if (typeReq === "log") {
             //plotFunc(`${res.data.aValue} + ${res.data.bValue} * log(x)`)
             plotFunc(`33 + 2 * log(x)`)
-        }
-    }*/
+        }*/
+    }
 
     useEffect(() => {
         makeReq("linear")
