@@ -63,6 +63,7 @@ function Predictions() {
                         console.warn(err)
                     })
         */
+        /*
         if (typeReq === "linear") {
             // plotFunc(`${res.data.aValue} + ${res.data.bValue} * x`)
             plotFunc(`121 + 22 * x`)
@@ -70,7 +71,7 @@ function Predictions() {
             //plotFunc(`${res.data.aValue} + ${res.data.bValue} * log(x)`)
             plotFunc(`33 + 2 * log(x)`)
         }
-    }
+    }*/
 
     useEffect(() => {
         makeReq("linear")
