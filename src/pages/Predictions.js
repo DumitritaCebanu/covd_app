@@ -42,7 +42,7 @@ function Predictions() {
 
     const makeReq = (typeReq) => {
        //din API
-        /*
+
                 axios({
                     method: 'get',
                     url: `http://localhost:5000/predictions/${typeReq}`,
@@ -51,19 +51,19 @@ function Predictions() {
                     .then(res => {
                         setData(res.data)
                         if(typeReq === "linear"){
-                            // plotFunc(`${res.data.aValue} + ${res.data.bValue} * x`)
-                            plotFunc(`121 + 22 * x`)
+                            plotFunc(`${res.data.aValue} + ${res.data.bValue} * x`)
+                            //plotFunc(`121 + 22 * x`)
                         } else if(typeReq === "log"){
-                            //plotFunc(`${res.data.aValue} + ${res.data.bValue} * log(x)`)
-                            plotFunc(`33 + 2 * log(x)`)
+                            plotFunc(`${res.data.aValue} + ${res.data.bValue} * log(x)`)
+                            //plotFunc(`33 + 2 * log(x)`)
                         } else if(typeReq === "expo"){
-                            plotFunc(`${res.data.aValue} * ${res.data.bValue} * exp(x)`)
+                            plotFunc('0.95 * exp(0.020x) + 50')
                         }
                     })
                     .catch(err => {
                         console.warn(err)
                     })
-        */
+
         //pentru test
         /*
         if (typeReq === "linear") {
