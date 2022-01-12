@@ -156,7 +156,7 @@ function Predictions() {
 
                     }}>
                         <h2 className="text-pred">
-                            Urmareste evolutia covid in baza algoritmilor de regresie liniara
+                            Urmareste evolutia covid in baza algoritmilor de regresie
                         </h2>
                     </Row>
                     <Col lg={8} style={{
